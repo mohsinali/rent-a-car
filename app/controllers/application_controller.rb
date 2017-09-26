@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
       new_user_session_path
   end
 
+  def after_sign_in_path_for(resource)
+    if current_user.role == "admin"
+      users_path
+    else
+      user_path(current_user)
+    end
+  end
+
 end
