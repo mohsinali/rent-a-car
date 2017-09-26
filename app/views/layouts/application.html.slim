@@ -5,12 +5,13 @@ html
     title
       = content_for?(:title) ? yield(:title) : 'Rent A Car'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Rent A Car'}"
-    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
-    == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
+    == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
   body
-    header
+    #wrapper class="#{params[:controller]}.#{params[:action]}"
       == render 'layouts/navigation'
-    main[role="main"]
-      == render 'layouts/messages'
-      == yield
+      #page-wrapper.gray-bg class="#{@extra_class}"
+        = render 'layouts/topnavbar'
+        == render 'layouts/messages'
+        == yield
