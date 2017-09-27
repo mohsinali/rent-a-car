@@ -18,10 +18,11 @@
                         </li>
                         <li><a href="">Contacts</a>
                         </li>
-                        <li><a href="">Mailbox</a>
-                        </li>
                         <li class="divider"></li>
-                        <li><a href="">Logout</a>
+                        <li>
+                          <%= link_to destroy_user_session_path, method: :delete do %>
+                              <i class="fa fa-sign-out"></i> Log out
+                          <% end %>
                         </li>
                     </ul>
                 </div>
