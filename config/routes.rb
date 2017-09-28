@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  root to: 'users#index'
-=======
-  
-  
->>>>>>> 6f19509ab56ee09ebbd499144da4aceae3e6b578
+
   devise_for :users
   resources :users
   # You can have the root of your site routed with "root"
