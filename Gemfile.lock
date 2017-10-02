@@ -109,6 +109,9 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.8.6)
     interception (0.5)
+    intl-tel-input-rails (11.0.14)
+      railties (>= 3.1)
+      sass-rails
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -119,6 +122,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    jquery-validation-rails (1.16.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.19)
@@ -179,6 +183,8 @@ GEM
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails_layout (1.0.41)
+    rails_script (2.0.3)
+      coffee-rails (~> 4.0, >= 4.0.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -296,10 +302,12 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-rails
+  intl-tel-input-rails
   jbuilder (~> 2.5)
   jquery-datetimepicker-rails
   jquery-rails
   jquery-ui-rails
+  jquery-validation-rails
   launchy
   listen (>= 3.0.5, < 3.2)
   pg
@@ -309,6 +317,7 @@ DEPENDENCIES
   pundit
   rails (~> 5.1.4)
   rails_layout
+  rails_script (~> 2.0)
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
