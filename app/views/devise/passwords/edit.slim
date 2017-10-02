@@ -5,7 +5,7 @@
         h5 Change your password
       .ibox-content
         .row
-          = form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { role: 'form',id: "reset_password_form",class: "form-horizontal"}) do |f|
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { role: 'form',id: "edit_password_form",class: "form-horizontal"}) do |f|
             .col-sm-offset-2.error
               = devise_error_messages!
             = f.hidden_field :reset_password_token
