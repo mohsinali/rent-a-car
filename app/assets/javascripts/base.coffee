@@ -3,6 +3,11 @@ class App.Base
 
   constructor: ->
     if (window.jQuery) then RailsScript.setClearEventHandlers() # clearing application event handlers only possible with jQuery
+    App.formValidators()
+    App.signUpFormValidator()
+    App.signinFormValidator()
+    App.newPasswordFormValidator()
+    App.editPasswordFormValidator()
     return this
 
 

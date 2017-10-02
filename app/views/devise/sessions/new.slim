@@ -1,0 +1,27 @@
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        h5 Sign in
+      .ibox-content
+        .row
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { role: 'form',id: "signin_form",class: "form-horizontal"}) do |f|
+            .col-sm-offset-2.error
+              = devise_error_messages!
+            .form-group
+              label.col-sm-2.control-label Email
+              .col-sm-6
+                = f.email_field :email,class: "form-control"
+            .form-group
+              label.col-sm-2.control-label Password
+              .col-sm-6
+                = f.password_field :password,class: "form-control"
+            - if devise_mapping.rememberable?
+              .form-group
+                label.col-sm-2.control-label Remember me
+                .col-sm-6
+                  = f.check_box :remember_me
+            
+            .form-group
+              .col-sm-4.col-sm-offset-2
+                = f.submit 'Sign in', class: 'btn btn-primary submit m-l-sm'
