@@ -25,6 +25,9 @@
 .invalid{
   border: 1px solid #ed5565;
 }
+.error{
+  color: #ed5565;  
+}
 label{
   &.invalid{
     border: none;

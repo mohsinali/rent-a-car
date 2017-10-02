@@ -6,9 +6,9 @@
           span.block.m-t-xs
             strong.font-bold #{current_user.name.try(:titleize)}
           /span.text-muted.text-xs.block
-            | #{current_user.restaurant.try(:name).try(:titleize)}
+            | Company Name
             b.caret
-      ul.dropdown-menu.animated.fadeInRight.m-t-xs
+      /ul.dropdown-menu.animated.fadeInRight.m-t-xs
         li
           = link_to 'Signout', destroy_user_session_path, :method=>'delete'
   li class="#{is_active_controller('dashboards')}"
