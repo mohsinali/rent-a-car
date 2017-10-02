@@ -1,0 +1,27 @@
+h1 Listing photos
+
+table
+  thead
+    tr
+      th Image
+      th Image type
+      th Comments
+      th Car
+      th
+      th
+      th
+
+  tbody
+    - @photos.each do |photo|
+      tr
+        td = photo.image
+        td = photo.image_type
+        td = photo.comments
+        td = photo.car
+        td = link_to 'Show', photo
+        td = link_to 'Edit', edit_photo_path(photo)
+        td = link_to 'Destroy', photo, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Photo', new_photo_path

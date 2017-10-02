@@ -1,0 +1,23 @@
+h1 Listing car_versions
+
+table
+  thead
+    tr
+      th Name
+      th Car model
+      th
+      th
+      th
+
+  tbody
+    - @car_versions.each do |car_version|
+      tr
+        td = car_version.name
+        td = car_version.car_model
+        td = link_to 'Show', car_version
+        td = link_to 'Edit', edit_car_version_path(car_version)
+        td = link_to 'Destroy', car_version, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Car version', new_car_version_path

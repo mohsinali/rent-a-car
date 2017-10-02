@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @car_model.name
+p
+  strong Make:
+  = @car_model.make
+
+= link_to 'Edit', edit_car_model_path(@car_model)
+'  |
+= link_to 'Back', car_models_path

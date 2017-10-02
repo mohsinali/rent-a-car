@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Registration no:
+  = @car.registration_no
+p
+  strong Mileage:
+  = @car.mileage
+p
+  strong Last oil change:
+  = @car.last_oil_change
+p
+  strong Per day rent:
+  = @car.per_day_rent
+p
+  strong User:
+  = @car.user
+
+= link_to 'Edit', edit_car_path(@car)
+'  |
+= link_to 'Back', cars_path

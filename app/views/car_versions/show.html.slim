@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @car_version.name
+p
+  strong Car model:
+  = @car_version.car_model
+
+= link_to 'Edit', edit_car_version_path(@car_version)
+'  |
+= link_to 'Back', car_versions_path

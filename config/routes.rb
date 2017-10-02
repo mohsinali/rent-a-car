@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
   
+  resources :car_versions
+  resources :car_models
+  resources :makes
+  resources :photos
+  resources :cars
   devise_for :users
   resources :users
   # You can have the root of your site routed with "root"

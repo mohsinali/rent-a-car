@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @make.name
+
+= link_to 'Edit', edit_make_path(@make)
+'  |
+= link_to 'Back', makes_path
