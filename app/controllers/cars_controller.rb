@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /cars
   # GET /cars.json
   def index
@@ -25,14 +25,18 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(car_params)
-
+    
+    @car.user = current_user
+    
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
         format.json { render :show, status: :created, location: @car }
+        binding.pry
       else
         format.html { render :new }
         format.json { render json: @car.errors, status: :unprocessable_entity }
+        
       end
     end
   end
