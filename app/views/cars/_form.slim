@@ -30,5 +30,9 @@
       = f.number_field :per_day_rent,min: 1000,class: "form-control"
   = render partial: 'car_photos_fields',locals: {car: car,f: f}
   .form-group
+    label.col-sm-2.control-label Details
+    .col-sm-6
+      = f.text_area :details,rows: 5,cols: 60,class: "form-control"
+  .form-group
     .col-sm-4.col-sm-offset-2
-      = f.submit 'Create Car', :class => 'btn btn-primary submit m-l-sm'
+      = f.submit "#{car.new_record? ? 'Create Car' : 'Update Car'}", :class => 'btn btn-primary submit m-l-sm'
