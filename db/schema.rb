@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010065537) do
+ActiveRecord::Schema.define(version: 20171010072523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171010065537) do
   create_table "car_photos", force: :cascade do |t|
     t.string "image"
     t.integer "image_type", default: 0
+    t.text "comments"
     t.integer "car_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 20171010065537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "car_version_id"
+    t.integer "make_id"
+    t.integer "car_model_id"
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 

@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    @cars = current_user.cars.all
   end
 
   # GET /cars/1
@@ -14,7 +14,13 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
-    @car = Car.new
+    @make = Make.first
+    @model = @make.car_models.first
+    @car = current_user.cars.new(make: @make,car_model: @model)
+    #build car photos
+    CarPhoto.image_types.each do |k,v|
+      @car.car_photos.build(image_type: k)
+    end
   end
 
   # GET /cars/1/edit
@@ -25,7 +31,6 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(car_params)
-    
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
@@ -70,6 +75,6 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:registration_no, :mileage, :last_oil_change, :per_day_rent, :user_id)
+      params.require(:car).permit(:registration_no, :mileage, :last_oil_change, :per_day_rent, :user_id,:make_id,:car_model_id,car_photos_attributes: [:image,:image_type,:comments])
     end
 end

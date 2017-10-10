@@ -1,0 +1,34 @@
+= simple_form_for car, html: { role: 'form',id: "car_form",class: "form-horizontal"} do |f|
+  = f.hidden_field :user_id
+  - if car.errors.messages.any?
+    .col-sm-offset-2.error
+      = car.errors.messages
+  .form-group
+    label.col-sm-2.control-label Make
+    .col-sm-6
+      = f.collection_select :make_id,Make.all,:id,:name,{selected: car.make_id},{class: "form-control"}
+
+  .form-group
+    label.col-sm-2.control-label Model
+    .col-sm-6
+      = f.collection_select :car_model_id,car.make.car_models,:id,:name,{selected: car.car_model_id},{class: "form-control"}
+  .form-group
+    label.col-sm-2.control-label Registration No
+    .col-sm-6
+      = f.text_field :registration_no,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Mileage
+    .col-sm-6
+      = f.text_field :mileage,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Last Oil Change
+    .col-sm-6
+      = f.date_field :last_oil_change,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Rent (per day)
+    .col-sm-6
+      = f.number_field :per_day_rent,min: 1000,class: "form-control"
+  = render partial: 'car_photos_fields',locals: {car: car,f: f}
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = f.submit 'Create Car', :class => 'btn btn-primary submit m-l-sm'

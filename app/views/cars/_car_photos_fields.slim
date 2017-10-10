@@ -1,0 +1,10 @@
+= f.fields_for :car_photos do |p|
+  - title = p.object.image_type.capitalize.split('_').join(' ')
+  .form-group
+    label.col-sm-2.control-label #{title}
+    .col-sm-6
+      = p.hidden_field 'image_type'
+      = p.file_field :image
+      br
+      = p.text_area :comments,placeholder: "#{title} details",rows: 5,cols: 60
+  
