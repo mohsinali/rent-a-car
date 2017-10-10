@@ -15,6 +15,16 @@
     = link_to root_path do
       i.fa.fa-th-large
       span.nav-label Dashboard
+  li class="#{is_active_controller('cars')}"
+    a href="#."
+      i.fa.fa-cab
+      span class="nav-label" Cars
+      span class="fa arrow"
+    ul class="nav nav-second-level collapse"
+      li class="#{is_active_action('index')}"
+        = link_to "List",cars_path
+      li class="#{is_active_action('new')}"
+        = link_to "Add a Car",new_car_path
 - else
   li
     = link_to 'Signin', new_user_session_path

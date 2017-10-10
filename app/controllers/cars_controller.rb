@@ -26,13 +26,10 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     
-    @car.user = current_user
-    
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
         format.json { render :show, status: :created, location: @car }
-        binding.pry
       else
         format.html { render :new }
         format.json { render json: @car.errors, status: :unprocessable_entity }

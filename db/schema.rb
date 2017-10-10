@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002074156) do
+ActiveRecord::Schema.define(version: 20171010065537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20171002074156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["make_id"], name: "index_car_models_on_make_id"
+  end
+
+  create_table "car_photos", force: :cascade do |t|
+    t.string "image"
+    t.integer "image_type", default: 0
+    t.integer "car_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "car_versions", force: :cascade do |t|
@@ -47,16 +55,6 @@ ActiveRecord::Schema.define(version: 20171002074156) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "image"
-    t.string "image_type"
-    t.text "comments"
-    t.bigint "car_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["car_id"], name: "index_photos_on_car_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,5 +84,4 @@ ActiveRecord::Schema.define(version: 20171002074156) do
   add_foreign_key "car_models", "makes"
   add_foreign_key "car_versions", "car_models"
   add_foreign_key "cars", "users"
-  add_foreign_key "photos", "cars"
 end
