@@ -5,16 +5,24 @@ class App.Cars extends App.Base
     return
 
   new: =>
-    console.log('in new')
     new App.Cars().carFormValidator()
     return
 
+  show: =>
+    $(document).on 'click','.thumb_image', (event) ->
+      event.preventDefault()
+      image_id = $(this).attr 'photo_id'
+      # hide large image, and only show image with this id
+      $(".large_image").addClass('hide')
+      $(".large_image[photo_id=#{image_id}]").removeClass('hide')
+      # show thumb image, and only hide image with this id
+      $(".thumb_image").removeClass('hide')
+      $(".thumb_image[photo_id=#{image_id}]").addClass('hide')
+
   # car form validator
   carFormValidator: ->
-    console.log('in validator')
     $carForm = $("#car_form")
     $carForm.submit (event) ->
-      console.log('on submit')
       $($carForm).validate
         focusInvalid: true
         errorClass: 'invalid'
