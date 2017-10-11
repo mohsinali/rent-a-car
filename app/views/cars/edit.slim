@@ -5,7 +5,7 @@
       li
         = link_to "Home",root_path
       li.active
-        strong Update Car
+        strong Edit Car
   .col-lg-2
 
 / Add a Car
@@ -13,7 +13,7 @@
   .col-lg-12
     .ibox.float-e-margins
       .ibox-title
-        h5 Update Car
+        h5 Edit Car
       .ibox-content
         .row
           = render partial: "form",locals: {car: @car}
