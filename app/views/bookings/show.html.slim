@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Car:
+  = @booking.car_id
+p
+  strong Customer:
+  = @booking.customer_id
+p
+  strong Booking price:
+  = @booking.booking_price
+p
+  strong Number of days:
+  = @booking.number_of_days
+p
+  strong Booking datetime:
+  = @booking.booking_datetime
+p
+  strong Advance payment:
+  = @booking.advance_payment
+
+= link_to 'Edit', edit_booking_path(@booking)
+'  |
+= link_to 'Back', bookings_path

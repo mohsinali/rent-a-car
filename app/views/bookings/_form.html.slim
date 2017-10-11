@@ -1,0 +1,27 @@
+= form_for @booking do |f|
+  - if @booking.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@booking.errors.count, "error")} prohibited this booking from being saved:"
+      ul
+        - @booking.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :car_id
+    = f.number_field :car_id
+  .field
+    = f.label :customer_id
+    = f.number_field :customer_id
+  .field
+    = f.label :booking_price
+    = f.text_field :booking_price
+  .field
+    = f.label :number_of_days
+    = f.number_field :number_of_days
+  .field
+    = f.label :booking_datetime
+    = f.datetime_select :booking_datetime
+  .field
+    = f.label :advance_payment
+    = f.text_field :advance_payment
+  .actions = f.submit

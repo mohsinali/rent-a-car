@@ -1,0 +1,31 @@
+h1 Listing bookings
+
+table
+  thead
+    tr
+      th Car
+      th Customer
+      th Booking price
+      th Number of days
+      th Booking datetime
+      th Advance payment
+      th
+      th
+      th
+
+  tbody
+    - @bookings.each do |booking|
+      tr
+        td = booking.car_id
+        td = booking.customer_id
+        td = booking.booking_price
+        td = booking.number_of_days
+        td = booking.booking_datetime
+        td = booking.advance_payment
+        td = link_to 'Show', booking
+        td = link_to 'Edit', edit_booking_path(booking)
+        td = link_to 'Destroy', booking, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Booking', new_booking_path

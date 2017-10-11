@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @reference.name
+p
+  strong Cnic:
+  = @reference.cnic
+p
+  strong Phone:
+  = @reference.phone
+p
+  strong Address:
+  = @reference.address
+
+= link_to 'Edit', edit_reference_path(@reference)
+'  |
+= link_to 'Back', references_path
