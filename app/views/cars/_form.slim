@@ -6,12 +6,12 @@
   .form-group
     label.col-sm-2.control-label Make
     .col-sm-6
-      = f.collection_select :make_id,Make.all,:id,:name,{selected: car.make_id},{class: "form-control"}
+      = f.collection_select :make_id,Make.all,:id,:name,{selected: car.make_id},{class: "form-control",id: "car_make_id"}
 
   .form-group
     label.col-sm-2.control-label Model
     .col-sm-6
-      = f.collection_select :car_model_id,car.make.car_models,:id,:name,{selected: car.car_model_id},{class: "form-control"}
+      = f.collection_select :car_model_id,car.make.car_models,:id,:name,{selected: car.car_model_id},{class: "form-control",id: "car_model_id"}
   .form-group
     label.col-sm-2.control-label Registration No
     .col-sm-6

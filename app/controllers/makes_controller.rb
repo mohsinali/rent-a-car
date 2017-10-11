@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  before_action :set_make, only: [:show, :edit, :update, :destroy]
+  before_action :set_make, only: [:show, :edit, :update, :destroy,:car_models]
 
   # GET /makes
   # GET /makes.json
@@ -59,6 +59,11 @@ class MakesController < ApplicationController
       format.html { redirect_to makes_url, notice: 'Make was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def car_models
+    @car_models = @make.car_models
+    render json: {car_models: @car_models}
   end
 
   private

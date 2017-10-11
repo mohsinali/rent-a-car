@@ -26,6 +26,19 @@ class App.Cars extends App.Base
   # car form validator
   carFormHandler: ->
     $carForm = $("#car_form")
+
+    # update models list according to selected make.
+    $(document).on "change","#car_make_id",(event) ->
+      make_id = $(this).val()
+      $.get "/makes/#{make_id}/car_models",(data) ->
+        options = ""
+        # iterate car models, and populate in options
+        $.each data.car_models,(index,element) ->
+          options += "<option value='#{element.id}'>#{element.name}</options>"
+
+        # replace car models list with updated list
+        $("#car_model_id").html(options)
+
     $carForm.submit (event) ->
       $($carForm).validate
         focusInvalid: true
