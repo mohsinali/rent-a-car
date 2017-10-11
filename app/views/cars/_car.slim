@@ -1,0 +1,16 @@
+tr id="car_#{car.id}"
+  td = car.registration_no
+  td #{car.make.name} #{car.car_model.name}
+  td = car.per_day_rent
+  td = car.last_oil_change.to_date
+  td = car.mileage
+  td
+    = link_to car_path(car),class: "btn btn-default m-r-xs",title: "Car details" do
+      i.fa.fa-file-o.m-r-xs
+      span
+    = link_to edit_car_path(car),class: "btn btn-default m-r-xs",title: "Edit car" do
+      i.fa.fa-pencil-square-o.m-r-xs
+      span
+    = link_to car_path(car),method: :delete,data: {confirm: "Are you sure to delete this car?"},title: "Remove car",class: "btn btn-default m-r-xs" do
+      i.fa.fa-trash.m-r-xs
+      span
