@@ -5,7 +5,11 @@ class App.Cars extends App.Base
     return
 
   new: =>
-    new App.Cars().carFormValidator()
+    new App.Cars().carFormHandler()
+    return
+
+  edit: =>
+    new App.Cars().carFormHandler()
     return
 
   show: =>
@@ -20,7 +24,7 @@ class App.Cars extends App.Base
       $(".thumb_image[photo_id=#{image_id}]").addClass('hide')
 
   # car form validator
-  carFormValidator: ->
+  carFormHandler: ->
     $carForm = $("#car_form")
     $carForm.submit (event) ->
       $($carForm).validate
@@ -45,13 +49,21 @@ class App.Cars extends App.Base
             number: true
             required: true
           "car[car_photos_attributes][0][image]":
-            required: true
+            required:
+              depends: (element) ->
+                $('#car_car_photos_attributes_0_id').val() == ''
           "car[car_photos_attributes][1][image]":
-            required: true
+            required:
+              depends: (element) ->
+                $('#car_car_photos_attributes_1_id').val() == ''
           "car[car_photos_attributes][2][image]":
-            required: true
+            required:
+              depends: (element) ->
+                $('#car_car_photos_attributes_2_id').val() == ''
           "car[car_photos_attributes][3][image]":
-            required: true
+            required:
+              depends: (element) ->
+                $('#car_car_photos_attributes_3_id').val() == ''
         messages:
           "car[registration_no]":
             required: "Registration number is required."

@@ -1,10 +1,16 @@
 = f.fields_for :car_photos do |p|
-  - title = p.object.image_type.capitalize.split('_').join(' ')
+  - photo = p.object
+  - title = photo.image_type.capitalize.split('_').join(' ')
   .form-group
+    = p.hidden_field :id
     label.col-sm-2.control-label #{title}
     .col-sm-6
       = p.hidden_field 'image_type'
-      = p.file_field :image
+      - if photo.new_record?
+        = p.file_field :image
+      - else
+        = image_tag photo.image.thumb.url
+        = p.file_field :image,value: photo.image
       br
       = p.text_area :comments,placeholder: "#{title} details",rows: 5,cols: 60
   
