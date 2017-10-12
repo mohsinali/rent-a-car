@@ -58,3 +58,6 @@ gem "font-awesome-rails"
 gem 'jquery-validation-rails'
 gem 'rails_script', '~> 2.0'
 gem 'intl-tel-input-rails'
+gem 'simple_form'
+gem 'carrierwave'
+gem "mini_magick"

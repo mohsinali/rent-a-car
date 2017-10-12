@@ -1,0 +1,60 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        strong Car details
+  .col-lg-2
+
+/ Add a Car
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        h5 Car Details
+      .ibox-content
+        .row
+          - car_photos = @car.car_photos
+          .col-lg-6
+            / images displayed in this section
+            .row
+              - car_photos.each_with_index do |photo,index|
+                .col-lg-12.large_image photo_id="#{photo.id}" class="#{index != 0 ? 'hide' : ''}"
+                  = image_tag photo.image.large.url
+                  br
+                  span #{photo.comments}
+            .row
+              - car_photos.each_with_index do |photo,index|
+                .col-lg-3.thumb_image photo_id="#{photo.id}" class="#{index == 0 ? 'hide' : ''}"
+                  = image_tag photo.image.thumb.url
+          .col-lg-6
+            / details displayed in this section
+            .row
+              h5
+                u 
+                  b #{@car.make.name} #{@car.car_model.name}
+            .row
+              .form-group
+                label.col-sm-4.control-label Model
+                .col-sm-8 #{@car.car_model.name}
+            .row
+              .form-group
+                label.col-sm-4.control-label Registration No.
+                .col-sm-8 #{@car.registration_no}
+            .row
+              .form-group
+                label.col-sm-4.control-label Last Oil Change
+                .col-sm-8 #{@car.last_oil_change.to_date}
+            .row
+              .form-group
+                label.col-sm-4.control-label Mileage
+                .col-sm-8 #{@car.mileage}
+            .row
+              .form-group
+                label.col-sm-4.control-label Rent
+                .col-sm-8 #{@car.per_day_rent}
+            p
+              = @car.details
+
