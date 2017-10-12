@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 20171011105902) do
-=======
 ActiveRecord::Schema.define(version: 20171010105148) do
->>>>>>> 53b2ce821af8a4f42ee565ba1836813393c766be
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+
   create_table "booking_dates", force: :cascade do |t|
     t.integer "booking_id"
     t.integer "car_id"
@@ -40,8 +39,7 @@ ActiveRecord::Schema.define(version: 20171010105148) do
     t.integer "reference_id"
   end
 
-=======
->>>>>>> 53b2ce821af8a4f42ee565ba1836813393c766be
+
   create_table "car_models", force: :cascade do |t|
     t.string "name"
     t.bigint "make_id"
@@ -82,7 +80,7 @@ ActiveRecord::Schema.define(version: 20171010105148) do
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
-<<<<<<< HEAD
+
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "cnic"
@@ -94,15 +92,14 @@ ActiveRecord::Schema.define(version: 20171010105148) do
     t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> 53b2ce821af8a4f42ee565ba1836813393c766be
+
   create_table "makes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
+
   create_table "photos", force: :cascade do |t|
     t.string "image"
     t.string "image_type"
@@ -122,8 +119,7 @@ ActiveRecord::Schema.define(version: 20171010105148) do
     t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> 53b2ce821af8a4f42ee565ba1836813393c766be
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -151,8 +147,6 @@ ActiveRecord::Schema.define(version: 20171010105148) do
   add_foreign_key "car_models", "makes"
   add_foreign_key "car_versions", "car_models"
   add_foreign_key "cars", "users"
-<<<<<<< HEAD
   add_foreign_key "photos", "cars"
-=======
->>>>>>> 53b2ce821af8a4f42ee565ba1836813393c766be
+
 end
