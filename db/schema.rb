@@ -10,29 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011105902) do
+ActiveRecord::Schema.define(version: 20171013070025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "booking_dates", force: :cascade do |t|
-    t.integer "booking_id"
-    t.integer "car_id"
-    t.date "booking_dates"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "bookings", force: :cascade do |t|
     t.integer "car_id"
     t.integer "customer_id"
     t.float "booking_price"
     t.integer "number_of_days", default: 1
-    t.datetime "booking_datetime"
+    t.datetime "from_booking"
     t.float "advance_payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "reference_id"
+    t.datetime "to_booking"
   end
 
   create_table "car_models", force: :cascade do |t|

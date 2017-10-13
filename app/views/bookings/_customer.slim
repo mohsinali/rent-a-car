@@ -1,0 +1,22 @@
+
+= f.fields_for :customers do |f|
+  .form-group
+    label.col-sm-2.control-label Name
+    .col-sm-6
+      = f.text_field :name,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label CNIC
+    .col-sm-6
+      = f.text_field :cnic,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Phone
+    .col-sm-6
+      = f.text_field :phone,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Address
+    .col-sm-6
+      = f.text_field :address,class: "form-control"
+  .form-group
+    label.col-sm-2.control-label Reference
+    .col-sm-6
+      = f.text_field :reference,class: "form-control"

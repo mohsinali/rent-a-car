@@ -15,6 +15,9 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @customer = Customer.new
+
+    @car = Car.where(:id => params[:car_id])
   end
 
   # GET /bookings/1/edit
@@ -69,6 +72,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:car_id, :customer_id, :booking_price, :number_of_days, :booking_datetime, :advance_payment)
+      params.require(:booking).permit(:car_id, :customer_id, :booking_price, :number_of_days, :from_booking,:to_booking, :advance_payment)
     end
 end

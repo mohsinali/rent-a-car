@@ -57,4 +57,5 @@
                 .col-sm-8 #{@car.per_day_rent}
             p
               = @car.details
-
+.row
+  = link_to "Book Now", new_booking_path(:car_id => @car.id), :class => 'btn btn-purchase'
