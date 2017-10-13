@@ -25,6 +25,14 @@
         = link_to "List",cars_path
       li class="#{is_active_action('new')}"
         = link_to "Add a Car",new_car_path
+  li class="#{is_active_controller('bookings')}"
+    a href="#."
+      i.fa.fa-book
+      span class="nav-label" Bookings
+      span class="fa arrow"
+    ul class="nav nav-second-level collapse"
+      li class="#{is_active_action('index')}"
+        = link_to "List",bookings_path
 - else
   li
     = link_to 'Signin', new_user_session_path
