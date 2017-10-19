@@ -18,7 +18,10 @@ class App.Bookings extends App.Base
 
 
   new: =>
+    $('#booking_advance_payment').change ->
+      $('#my-id').val $(this).val()
     return
+    # return
 
 
   edit: =>

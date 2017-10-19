@@ -14,10 +14,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = Booking.new
-    @customer = Customer.new
-
-    @car = Car.where(:id => params[:car_id])
+    @booking = Booking.new(:car_id => params[:car_id])
+    @booking.build_customer
+    @booking.references.build
   end
 
   # GET /bookings/1/edit
@@ -28,7 +27,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    @booking.update_attribute(:number_of_days, (@booking.to_booking.to_date - @booking.from_booking.to_date).to_i)
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -37,6 +36,7 @@ class BookingsController < ApplicationController
         format.html { render :new }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
+      
     end
   end
 
@@ -72,6 +72,7 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:car_id, :customer_id, :booking_price, :number_of_days, :from_booking,:to_booking, :advance_payment)
+      params.require(:booking).permit(:car_id, :customer_id, :booking_price, :from_booking,:to_booking, :advance_payment,customer_attributes:[:name,:cnic,:address,:phone],references_attributes:[:name,:address,:cnic,:phone])
     end
 end
+

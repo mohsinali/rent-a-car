@@ -1,5 +1,5 @@
 class Reference < ApplicationRecord
     # Associations
-    has_many :bookings
-    has_many :customers
+    belongs_to :booking
+    # belongs_to :customer
 end

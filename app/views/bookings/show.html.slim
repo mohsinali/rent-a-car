@@ -1,24 +1,144 @@
-p#notice = notice
+/ p#notice = notice
 
-p
-  strong Car:
-  = @booking.car_id
-p
-  strong Customer:
-  = @booking.customer_id
-p
-  strong Booking price:
-  = @booking.booking_price
-p
-  strong Number of days:
-  = @booking.number_of_days
-p
-  strong Booking datetime:
-  = @booking.booking_datetime
-p
-  strong Advance payment:
-  = @booking.advance_payment
+/ p
+/   strong Car:
+/   = @booking.car_id
+/ p
+/   strong Customer:
+/   = @booking.customer_id
+/ p
+/   strong Booking price:
+/   = @booking.booking_price
+/ p
+/   strong Number of days:
+/   = @booking.number_of_days
+/ p
+/   / strong Booking datetime:
+/   / = @booking.booking_datetime
+/ p
+/   strong Advance payment:
+/   = @booking.advance_payment
 
+/ = link_to 'Edit', edit_booking_path(@booking)
+/ '  |
+/ = link_to 'Back', bookings_path
+
+.row
+  .col-sm-4
+    .ibox.float-e-margins
+      .ibox-title
+        h3
+          | Customer Details :
+      .ibox-content
+        .row
+          .form-group
+            label.col-sm-6.control-label Id:
+            .col-sm-6 #{@booking.customer.id}
+        .row
+          .form-group
+            label.col-sm-6.control-label Name:
+            .col-sm-6 #{@booking.customer.name}
+        .row
+          .form-group
+            label.col-sm-6.control-label CNIC:
+            .col-sm-6 #{@booking.customer.cnic}
+          .row
+          .form-group
+            label.col-sm-6.control-label Phone:
+            .col-sm-6 #{@booking.customer.phone}
+        .row
+          .form-group
+            label.col-sm-6.control-label Address:
+            .col-sm-6 #{@booking.customer.address}
+
+
+  .col-sm-4
+    .ibox.float-e-margins
+      .ibox-title
+        h3
+          | Reference Details :
+      .ibox-content
+        / .row
+        /   .form-group
+        /     label.col-sm-6.control-label Id:
+        /     .col-sm-6 #{@booking.reference.id}
+        / .row
+        /   .form-group
+        /     label.col-sm-6.control-label Name:
+        /     .col-sm-6 #{@booking.reference.name}
+        / .row
+        /   .form-group
+        /     label.col-sm-6.control-label CNIC:
+        /     .col-sm-6 #{@booking.reference.cnic}
+        /   .row
+        /   .form-group
+        /     label.col-sm-6.control-label Phone:
+        /     .col-sm-6 #{@booking.reference.phone}
+        / .row
+        /   .form-group
+        /     label.col-sm-6.control-label Address:
+        /     .col-sm-6 #{@booking.reference.address}
+
+
+
+  .col-sm-4
+    .ibox.float-e-margins
+      .ibox-title
+        h3
+          | Booking Details :
+        .row
+          .ibox.float-e-margins
+            .ibox-title
+              h3
+                | Car Details :
+            .ibox-content
+              .row
+                h5
+                  u 
+                    b #{@booking.car.make.name} 
+              .row
+                .form-group
+                  label.col-sm-6.control-label Model
+                  .col-sm-6 #{@booking.car.car_model.name}
+              .row
+                .form-group
+                  label.col-sm-6.control-label Registration No.
+                  .col-sm-6 #{@booking.car.registration_no}
+              .row
+                .form-group
+                  label.col-sm-6.control-label Last Oil Change
+                  .col-sm-6 #{@booking.car.last_oil_change.to_date}
+              .row
+                .form-group
+                  label.col-sm-6.control-label Mileage
+                  .col-sm-6 #{@booking.car.mileage}
+        .row
+            / .ibox.float-e-margins
+            .ibox-title
+              h3
+                | Booking :
+            .ibox-content
+              .row
+                .form-group
+                  label.col-sm-6.control-label Rent per Day:
+                  .col-sm-6 #{@booking.car.per_day_rent} PKR
+              .row
+                .form-group
+                  label.col-sm-6.control-label Advance Payment:
+                  .col-sm-6 #{@booking.advance_payment}
+              .row
+                .form-group
+                  label.col-sm-6.control-label Start Booking:
+                  .col-sm-6 #{@booking.from_booking.strftime("at %m/%d/%Y")}
+              .row
+                .form-group
+                  label.col-sm-6.control-label End Booking:
+                  .col-sm-6 #{@booking.to_booking.strftime("at %m/%d/%Y")}
+              .row
+                .form-group
+                  label.col-sm-6.control-label Number of Days:
+                  .col-sm-6 #{@booking.number_of_days}
+.row
 = link_to 'Edit', edit_booking_path(@booking)
 '  |
-= link_to 'Back', bookings_path
+= link_to 'Done', root_path,class: "btn btn-primary btn-lg"

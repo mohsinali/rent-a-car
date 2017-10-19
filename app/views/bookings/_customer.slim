@@ -1,5 +1,5 @@
 
-= f.fields_for :customers do |f|
+= f.fields_for :customer do |f|
   .form-group
     label.col-sm-2.control-label Name
     .col-sm-6
@@ -17,6 +17,3 @@
     .col-sm-6
       = f.text_field :address,class: "form-control"
   .form-group
-    label.col-sm-2.control-label Reference
-    .col-sm-6
-      = f.text_field :reference,class: "form-control"

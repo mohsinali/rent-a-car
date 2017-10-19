@@ -4,7 +4,7 @@
   = f.hidden_field :car_id
   - if @booking.errors.messages.any?
     .col-sm-offset-2.error
-      = booking.errors.message
+      = @booking.errors.messages
   .form-group
     .row
       .col-sm-6
@@ -21,27 +21,22 @@
               | Booking Details :
           .ibox-content
             .form-group
-              label.col-sm-2.control-label Car ID
-              .col-sm-6
-                = f.number_field  :car_id,class: "form-control"
+              label.col-sm-4.control-label Rent per Day:
+              .col-sm-2
+              .col-sm-6 #{@booking.car.per_day_rent} PKR
             .form-group
-              label.col-sm-2.control-label Customer ID
-              .col-sm-6
-                = f.number_field :customer_id,class: "form-control"
-            .form-group
-              label.col-sm-2.control-label Rent
-              .col-sm-6
-                = f.text_field :booking_price,class: "form-control"
-            .form-group
-              label.col-sm-2.control-label Advance Payment
+              label.col-sm-4.control-label Advance Payment:
+              .col-sm-2
               .col-sm-6
                 = f.text_field :advance_payment,class: "form-control"
             .form-group
-              label.col-sm-2.control-label From  
+              label.col-sm-2.control-label Start Date:
+              / .col-sm-2  
               .col-sm-6
-                = f.datetime_select :from_booking,class: "form-control"
+                = f.datetime_select :from_booking,class: "form-control" 
             .form-group
-              label.col-sm-2.control-label To  
+              label.col-sm-2.control-label End Date:
+              / .col-sm-2  
               .col-sm-6
                 = f.datetime_select :to_booking,class: "form-control"
   .form-group
@@ -52,7 +47,7 @@
             h3
               | Reference Details :
           .ibox-content
-            = render partial: "references",locals:{f: f}
+            = render partial: "reference",locals:{f: f}
 
       .col-sm-6
         .ibox.float-e-margins
@@ -60,7 +55,42 @@
               h3
                 | Price Details :
             .ibox-content
-              h2 Still working.......      
+              .row
+                .form-group
+                  label.col-sm-4.control-label Rental Days:
+                  .col-sm-2
+                  .col-sm-6 #{@booking.from_booking.to_i - @booking.to_booking.to_i} Days
+              .row
+                .form-group
+                  label.col-sm-4.control-label Price per Day:
+                  / br
+                  /   small.text-muted.m-b.block  Rent per Day * Number of Days
+                  .col-sm-2
+                  .col-sm-6 #{@booking.car.per_day_rent.to_i } * #{@booking.number_of_days} PKR
+              .row
+                .form-group
+                  label.col-sm-4.control-label Car Rental Fee:
+                  .col-sm-2
+                  .col-sm-6 #{@booking.car.per_day_rent} PKR
+              .row
+                .form-group
+                  label.col-sm-4.control-label Advance Payment:
+                  .col-sm-2
+                  .col-sm-6
+                    input#my-id type="text" disabled= true
+              .row
+                .form-group
+                  label.col-sm-4.control-label Require Deposit:
+                  .col-sm-2
+                  .col-sm-6 #{@booking.car.per_day_rent} PKR
+              .row
+                .form-group
+                  .col-sm-6
+                    button.btn.btn-block.btn-outline.btn-primary type="button"  Send Notification
+                  .col-sm-6
+                    button.btn.btn-block.btn-outline.btn-primary type="button"  Send Email
+
+
       
 
-    .actions = f.submit
+    .actions = f.submit class: 'btn btn-primary submit m-l-sm'
