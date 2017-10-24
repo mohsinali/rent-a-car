@@ -1,27 +1,3 @@
-/ p#notice = notice
-
-/ p
-/   strong Car:
-/   = @booking.car_id
-/ p
-/   strong Customer:
-/   = @booking.customer_id
-/ p
-/   strong Booking price:
-/   = @booking.booking_price
-/ p
-/   strong Number of days:
-/   = @booking.number_of_days
-/ p
-/   / strong Booking datetime:
-/   / = @booking.booking_datetime
-/ p
-/   strong Advance payment:
-/   = @booking.advance_payment
-
-/ = link_to 'Edit', edit_booking_path(@booking)
-/ '  |
-/ = link_to 'Back', bookings_path
 
 .row
   .col-sm-4
@@ -111,7 +87,7 @@
               .row
                 .form-group
                   label.col-sm-6.control-label Mileage
-                  .col-sm-6 #{@booking.car.mileage}
+                  .col-sm-6 #{@booking.car.mileage} Km
         .row
             / .ibox.float-e-margins
             .ibox-title
@@ -128,6 +104,10 @@
                   .col-sm-6 #{@booking.advance_payment}
               .row
                 .form-group
+                  label.col-sm-6.control-label Total Payment:
+                  .col-sm-6 #{@booking.booking_price} PKR
+              .row
+                .form-group
                   label.col-sm-6.control-label Start Booking:
                   .col-sm-6 #{@booking.from_booking.strftime("at %m/%d/%Y")}
               .row
@@ -137,7 +117,7 @@
               .row
                 .form-group
                   label.col-sm-6.control-label Number of Days:
-                  .col-sm-6 #{@booking.number_of_days}
+                  .col-sm-6 #{@booking.number_of_days} Days
 .row
 = link_to 'Edit', edit_booking_path(@booking)
 '  |

@@ -30,15 +30,15 @@
               .col-sm-6
                 = f.text_field :advance_payment,class: "form-control"
             .form-group
-              label.col-sm-2.control-label Start Date:
-              / .col-sm-2  
+              label.col-sm-4.control-label Start Date:
+              .col-sm-2  
               .col-sm-6
-                = f.datetime_select :from_booking,class: "form-control" 
+                = f.date_field :from_booking,class: "form-control"
             .form-group
-              label.col-sm-2.control-label End Date:
-              / .col-sm-2  
+              label.col-sm-4.control-label End Date:
+              .col-sm-2  
               .col-sm-6
-                = f.datetime_select :to_booking,class: "form-control"
+                = f.date_field :to_booking,class: "form-control"
   .form-group
     .row
       .col-sm-6
@@ -59,7 +59,8 @@
                 .form-group
                   label.col-sm-4.control-label Rental Days:
                   .col-sm-2
-                  .col-sm-6 #{@booking.from_booking.to_i - @booking.to_booking.to_i} Days
+                  .col-sm-6
+                    input#total_days type="text" disabled= true
               .row
                 .form-group
                   label.col-sm-4.control-label Price per Day:
@@ -71,7 +72,7 @@
                 .form-group
                   label.col-sm-4.control-label Car Rental Fee:
                   .col-sm-2
-                  .col-sm-6 #{@booking.car.per_day_rent} PKR
+                  .col-sm-6 #{@booking.booking_price} PKR
               .row
                 .form-group
                   label.col-sm-4.control-label Advance Payment:

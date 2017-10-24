@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    @booking.update_attribute(:number_of_days, (@booking.to_booking.to_date - @booking.from_booking.to_date).to_i)
+
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -36,7 +36,8 @@ class BookingsController < ApplicationController
         format.html { render :new }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
-      
+        # update number of days  and booking payment in booking table
+      @booking.update_attributes({:number_of_days => (@booking.to_booking.to_date - @booking.from_booking.to_date).to_i, :booking_price=> (@booking.car.per_day_rent * @booking.number_of_days).to_i})
     end
   end
 
