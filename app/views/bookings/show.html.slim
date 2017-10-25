@@ -104,6 +104,6 @@
                   label.col-sm-6.control-label Number of Days:
                   .col-sm-6 #{@booking.number_of_days} Days
 .row
-= link_to 'Edit', edit_booking_path(@booking)
+= link_to 'Edit', edit_booking_path(@booking),class: "btn btn-info btn-lg"
 '  |
-= link_to 'Done', root_path,class: "btn btn-primary btn-lg"
+= link_to 'Done', bookings_path,class: "btn btn-primary btn-lg"
