@@ -37,7 +37,15 @@ class BookingsController < ApplicationController
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
         # update number of days  and booking payment in booking table
-      @booking.update_attributes({:number_of_days => (@booking.to_booking.to_date - @booking.from_booking.to_date).to_i, :booking_price=> (@booking.car.per_day_rent * @booking.number_of_days).to_i})
+      # @booking.update_attributes({:number_of_days => (@booking.to_booking.to_date - @booking.from_booking.to_date).to_i, :booking_price=> (@booking.car.per_day_rent * @booking.number_of_days).to_i})
+
+      # update number of days in booking table
+
+      @booking.update_attribute(:number_of_days,(@booking.to_booking.to_date - @booking.from_booking.to_date).to_i)
+      
+      # update  booking payment in booking table
+
+      @booking.update_attribute(:booking_price, (@booking.car.per_day_rent * @booking.number_of_days).to_i)
     end
   end
 

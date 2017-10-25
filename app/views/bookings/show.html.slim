@@ -34,28 +34,13 @@
         h3
           | Reference Details :
       .ibox-content
-        / .row
-        /   .form-group
-        /     label.col-sm-6.control-label Id:
-        /     .col-sm-6 #{@booking.reference.id}
-        / .row
-        /   .form-group
-        /     label.col-sm-6.control-label Name:
-        /     .col-sm-6 #{@booking.reference.name}
-        / .row
-        /   .form-group
-        /     label.col-sm-6.control-label CNIC:
-        /     .col-sm-6 #{@booking.reference.cnic}
-        /   .row
-        /   .form-group
-        /     label.col-sm-6.control-label Phone:
-        /     .col-sm-6 #{@booking.reference.phone}
-        / .row
-        /   .form-group
-        /     label.col-sm-6.control-label Address:
-        /     .col-sm-6 #{@booking.reference.address}
-
-
+        .row
+          - references = @booking.references
+            - references.each do |rs|
+              .form-group
+                label.col-sm-6.control-label id
+                .col-sm-6
+                  = rs.id
 
   .col-sm-4
     .ibox.float-e-margins
