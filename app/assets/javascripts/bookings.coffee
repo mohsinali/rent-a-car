@@ -55,13 +55,16 @@ class App.Bookings extends App.Base
       fromDate = new Date($('#booking_from_booking').val())
       setTotalDays(fromDate,toDate)
       
-    # calculate numer of days
+    # calculate number of days
 
     setTotalDays = (fromDate,toDate) ->
         diff = toDate - fromDate
         days = diff/(24 * 3600 * 1000)
+        if isNaN(days)
+          days =1
+
         setTotalRent(days)
-        $('#total_days').val days
+        $('#booking_number_of_days').val days
 
     # calculate total total rent
 
