@@ -20,15 +20,64 @@ class App.Bookings extends App.Base
   new: =>
     # form Validation
     new App.Bookings().bookingFormHandler()
-    
-    # get Advance Payment value from booking and insert in price details
-    $('#booking_advance_payment').change ->
-      $('#my-id').val $(this).val()
-  
+
+  # calculate and fill price section in booking form
+
+    new App.Bookings().bookingPriceHandler()
+
+
 
 
   edit: =>
+
+    # calculate and fill price section in booking form
+
+    new App.Bookings().bookingPriceHandler()
     return
+
+  # calculate and fill price section in booking form
+
+  bookingPriceHandler: ->
+
+    # get Advance Payment value from booking and insert in price details
+    $('#booking_advance_payment').change ->
+      $('#my-id').val $(this).val()
+
+    $('#booking_from_booking').change ->
+      fromDate = new Date($(this).val())
+      toDate = new Date($('#booking_to_booking').val())
+      setTotalDays(fromDate,toDate)
+
+    $('#booking_to_booking').change ->
+      toDate = new Date($(this).val())
+      fromDate = new Date($('#booking_from_booking').val())
+      setTotalDays(fromDate,toDate)
+      
+    # calculate numer of days
+
+    setTotalDays = (fromDate,toDate) ->
+        diff = toDate - fromDate
+        days = diff/(24 * 3600 * 1000)
+        setTotalRent(days)
+        $('#total_days').val days
+
+    # calculate total total rent
+
+    setTotalRent = (days) ->
+      rent = $('#per_day_rent').val()
+
+      total_rent = parseInt(rent * days)
+      $('#total_price').val total_rent
+
+      setRemainAmount(total_rent)
+
+    # calculate remaining amount  
+
+    setRemainAmount = (total_rent) ->
+      advance = $('#booking_advance_payment').val()
+
+      remaining_amount = total_rent - advance
+      $('#remaining_price').val remaining_amount
 
   # form Validation function
   bookingFormHandler: ->

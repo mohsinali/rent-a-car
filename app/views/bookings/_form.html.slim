@@ -23,7 +23,9 @@
             .form-group
               label.col-sm-4.control-label Rent per Day:
               .col-sm-2
-              .col-sm-6 #{@booking.car.per_day_rent} PKR
+              .col-sm-6
+                input.form-control[id='per_day_rent' value=@booking.car.per_day_rent readonly]
+                
             .form-group
               label.col-sm-4.control-label Advance Payment:
               .col-sm-2
@@ -67,12 +69,13 @@
                   / br
                   /   small.text-muted.m-b.block  Rent per Day * Number of Days
                   .col-sm-2
-                  .col-sm-6 #{@booking.car.per_day_rent.to_i } * #{@booking.number_of_days} PKR
+                  .col-sm-6 #{@booking.car.per_day_rent.to_i } * 1 Day PKR
               .row
                 .form-group
                   label.col-sm-4.control-label Car Rental Fee:
                   .col-sm-2
-                  .col-sm-6 #{@booking.booking_price} PKR
+                  .col-sm-6 
+                    = f.text_field :booking_price,id: :total_price,class: "form-control"
               .row
                 .form-group
                   label.col-sm-4.control-label Advance Payment:
@@ -81,9 +84,10 @@
                     input#my-id type="text" disabled= true
               .row
                 .form-group
-                  label.col-sm-4.control-label Require Deposit:
+                  label.col-sm-4.control-label Remaining Deposit:
                   .col-sm-2
-                  .col-sm-6 #{@booking.car.per_day_rent} PKR
+                  .col-sm-6 
+                    input#remaining_price type="text" disabled=true PKR
               .row
                 .form-group
                   .col-sm-6
