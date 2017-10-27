@@ -21,7 +21,7 @@ class App.Bookings extends App.Base
     # form Validation
     new App.Bookings().bookingFormHandler()
 
-  # calculate and fill price section in booking form
+   # calculate and fill price section in booking form
 
     new App.Bookings().bookingPriceHandler()
 
@@ -71,11 +71,11 @@ class App.Bookings extends App.Base
       total_rent = parseInt(rent * days)
       $('#total_price').val total_rent
 
-      setRemainAmount(total_rent)
+      setRemainingAmount(total_rent)
 
     # calculate remaining amount  
 
-    setRemainAmount = (total_rent) ->
+    setRemainingAmount = (total_rent) ->
       advance = $('#booking_advance_payment').val()
 
       remaining_amount = total_rent - advance
@@ -94,8 +94,7 @@ class App.Bookings extends App.Base
           "booking[customer_attributes][cnic]":
             required: true
             digits: true
-            minlength: 13
-            maxlength: 13
+            length: 13
           "booking[customer_attributes][address]":
             required: true
           "booking[advance_payment]":
