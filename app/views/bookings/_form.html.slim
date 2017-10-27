@@ -35,12 +35,12 @@
               label.col-sm-4.control-label Start Date:
               .col-sm-2  
               .col-sm-6
-                = f.date_field :from_booking,class: "form-control"
+                = f.date_field :from_booking,class: "form-control",min: Date.today
             .form-group
               label.col-sm-4.control-label End Date:
               .col-sm-2  
               .col-sm-6
-                = f.date_field :to_booking,class: "form-control"
+                = f.date_field :to_booking,class: "form-control",min: Date.today
   .form-group
     .row
       .col-sm-6
