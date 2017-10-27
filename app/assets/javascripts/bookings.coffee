@@ -29,11 +29,13 @@ class App.Bookings extends App.Base
 
 
   edit: =>
+    # form Validation
+    new App.Bookings().bookingFormHandler()
 
     # calculate and fill price section in booking form
 
     new App.Bookings().bookingPriceHandler()
-    return
+    
 
   # calculate and fill price section in booking form
 
@@ -97,7 +99,6 @@ class App.Bookings extends App.Base
           "booking[customer_attributes][address]":
             required: true
           "booking[advance_payment]":
-            digits: true
             required: true
           "booking[from_booking]":
             date: true

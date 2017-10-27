@@ -54,6 +54,9 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
+        # update number of days in booking table
+        @booking.update_attribute(:number_of_days,(@booking.to_booking.to_date - @booking.from_booking.to_date).to_i)
+
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
@@ -81,7 +84,7 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:car_id, :customer_id, :booking_price, :from_booking,:to_booking, :advance_payment,customer_attributes:[:name,:cnic,:address,:phone],references_attributes:[:name,:address,:cnic,:phone])
+      params.require(:booking).permit(:car_id, :customer_id, :booking_price,:number_of_days, :from_booking,:to_booking, :advance_payment,customer_attributes:[:name,:cnic,:address,:phone],references_attributes:[:name,:address,:cnic,:phone])
     end
 end
 
