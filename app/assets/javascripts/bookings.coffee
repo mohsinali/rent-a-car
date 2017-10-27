@@ -43,7 +43,7 @@ class App.Bookings extends App.Base
 
     # get Advance Payment value from booking and insert in price details
     $('#booking_advance_payment').change ->
-      $('#my-id').val $(this).val()
+      $('#advance_payment').val $(this).val()
 
     $('#booking_from_booking').change ->
       fromDate = new Date($(this).val())
