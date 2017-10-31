@@ -21,6 +21,8 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
+    @booking = Booking.find(params[:id])
+
   end
 
   # POST /bookings
@@ -42,6 +44,7 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
+    @booking = Booking.find(params[:id])
     respond_to do |format|
       if @booking.update(booking_params)
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
@@ -71,7 +74,7 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:car_id, :customer_id, :booking_price,:number_of_days, :from_booking,:to_booking, :advance_payment,customer_attributes:[:name,:cnic,:address,:phone],references_attributes:[:name,:address,:cnic,:phone])
+      params.require(:booking).permit(:car_id, :customer_id, :booking_price,:number_of_days, :from_booking,:to_booking, :advance_payment,customer_attributes:[:id,:name,:cnic,:address,:phone],references_attributes:[:id,:name,:address,:cnic,:phone])
     end
 end
 
