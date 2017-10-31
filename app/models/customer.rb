@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
     # Associations
-    has_many :bookings
+    has_many :bookings, dependent: :destroy
 
     # Validations
     validates :name, :presence => true

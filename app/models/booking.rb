@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
     # Associations
-    belongs_to :car
+    belongs_to :car, dependent: :destroy
     belongs_to :customer
     has_many :references
     accepts_nested_attributes_for :customer

@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   # Associations
+  has_many :booking ,dependent: :destroy
   belongs_to :user
   belongs_to :make
   belongs_to :car_model

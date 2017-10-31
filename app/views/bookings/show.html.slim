@@ -1,3 +1,18 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        = link_to "Booking Details",bookings_path
+  .col-lg-2
+    .ibox.float-e-margins
+        .pull-right
+          = link_to edit_booking_path(@booking),class: "btn btn-primary btn-sm" do
+            i.fa.fa-plus.m-r-xs
+            span Edit Booking
+
 
 .row.border-bottom.white-bg.dashboard-header
   .col-md-6
@@ -111,10 +126,3 @@
         .form-group
           label.col-sm-6.control-label Number of Days:
           .col-sm-6 #{@booking.number_of_days} Days
-br
-br
-.row
-= link_to 'Edit', edit_booking_path(@booking),class: "btn btn-info btn-lg"
-'  |
-= link_to 'Done', bookings_path,class: "btn btn-primary btn-lg"
-
