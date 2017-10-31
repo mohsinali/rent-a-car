@@ -1,0 +1,27 @@
+h1 Listing references
+
+table
+  thead
+    tr
+      th Name
+      th Cnic
+      th Phone
+      th Address
+      th
+      th
+      th
+
+  tbody
+    - @references.each do |reference|
+      tr
+        td = reference.name
+        td = reference.cnic
+        td = reference.phone
+        td = reference.address
+        td = link_to 'Show', reference
+        td = link_to 'Edit', edit_reference_path(reference)
+        td = link_to 'Destroy', reference, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Reference', new_reference_path

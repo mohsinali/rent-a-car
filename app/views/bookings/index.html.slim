@@ -1,0 +1,36 @@
+
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        strong Booking List
+  .col-lg-2
+
+
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        h5 Bookings
+        .pull-right
+          = link_to cars_path,class: "btn btn-primary btn-sm" do
+            i.fa.fa-plus.m-r-xs
+            span Add a Booking
+      .ibox-content
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th Car Details
+                th Customer Details
+                th Booking price
+                th Number of days
+                th Booking Start
+                th Booking To
+                th Advance payment
+                th Actions
+            tbody.booking_list
+              = render partial: "booking",collection: @bookings

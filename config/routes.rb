@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :references
+  resources :bookings
+  resources :customers
   devise_for :users
   resources :users
   resources :car_versions

@@ -1,0 +1,13 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        strong Add a Booking
+  .col-lg-2
+
+== render 'form'
+
+= link_to 'Back', bookings_path,class: 'btn btn-danger submit m-l-sm'

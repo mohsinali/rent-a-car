@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010105148) do
+ActiveRecord::Schema.define(version: 20171018061105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "car_id"
+    t.integer "customer_id"
+    t.float "booking_price"
+    t.integer "number_of_days", default: 1
+    t.datetime "from_booking"
+    t.float "advance_payment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "to_booking"
+  end
 
   create_table "car_models", force: :cascade do |t|
     t.string "name"
@@ -55,10 +67,40 @@ ActiveRecord::Schema.define(version: 20171010105148) do
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "cnic"
+    t.string "phone"
+    t.text "address"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "makes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.string "image_type"
+    t.text "comments"
+    t.bigint "car_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_photos_on_car_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string "name"
+    t.string "cnic"
+    t.string "phone"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,4 +130,5 @@ ActiveRecord::Schema.define(version: 20171010105148) do
   add_foreign_key "car_models", "makes"
   add_foreign_key "car_versions", "car_models"
   add_foreign_key "cars", "users"
+  add_foreign_key "photos", "cars"
 end
