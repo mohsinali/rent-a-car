@@ -44,9 +44,6 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        # update number of days in booking table
-        @booking.update_attribute(:number_of_days,(@booking.to_booking.to_date - @booking.from_booking.to_date).to_i)
-
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
