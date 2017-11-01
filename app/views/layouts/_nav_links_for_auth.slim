@@ -33,6 +33,16 @@
     ul class="nav nav-second-level collapse"
       li class="#{is_active_action('index')}"
         = link_to "List",bookings_path
+  li class="#{is_active_controller('customers')}"
+    a href="#."
+      i.fa.fa-users
+      span class="nav-label" Customers
+      span class="fa arrow"
+    ul class="nav nav-second-level collapse"
+      li class="#{is_active_action('index')}"
+        = link_to "List",customers_path
+      li class="#{is_active_action('new')}"
+        = link_to "Add a Customer",new_customer_path
 - else
   li
     = link_to 'Signin', new_user_session_path

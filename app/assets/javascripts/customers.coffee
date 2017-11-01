@@ -18,8 +18,30 @@ class App.Customers extends App.Base
 
 
   new: =>
+
+     # form Validation
+    new App.Customers().customerFormHandler()
+
     return
 
 
   edit: =>
     return
+
+
+  # form Validation function
+  customerFormHandler: ->
+    $customerForm = $("#customer_form").validate
+
+        rules:
+          "customer[name]":
+            required: true
+          "customer[phone]":
+            required: true
+            digits: true
+          "customer[cnic]":
+            required: true
+            digits: true
+            length: 13
+          "customer[address]":
+            required: true

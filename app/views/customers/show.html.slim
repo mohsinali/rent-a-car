@@ -1,21 +1,43 @@
-p#notice = notice
 
-p
-  strong Name:
-  = @customer.name
-p
-  strong Cnic:
-  = @customer.cnic
-p
-  strong Phone:
-  = @customer.phone
-p
-  strong Address:
-  = @customer.address
-p
-  strong Reference:
-  = @customer.reference
 
-= link_to 'Edit', edit_customer_path(@customer)
-'  |
-= link_to 'Back', customers_path
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        = link_to "Customer Details",customers_path
+  .col-lg-2
+    .ibox.float-e-margins
+        .pull-right
+          = link_to edit_customer_path(@customer),class: "btn btn-primary btn-sm" do
+            i.fa.fa-plus.m-r-xs
+            span Edit Customer
+
+
+.row.border-bottom.white-bg.dashboard-header
+  .col-md-12
+    h2
+      | Customer Details :
+    .ibox-content 
+      .row
+        .form-group
+          label.col-sm-6.control-label Id:
+          .col-sm-6 #{@customer.id}
+      .row
+        .form-group
+          label.col-sm-6.control-label Name:
+          .col-sm-6 #{@customer.name}
+      .row
+        .form-group
+          label.col-sm-6.control-label CNIC:
+          .col-sm-6 #{@customer.cnic}
+        .row
+        .form-group
+          label.col-sm-6.control-label Phone:
+          .col-sm-6 #{@customer.phone}
+      .row
+        .form-group
+          label.col-sm-6.control-label Address:
+          .col-sm-6 #{@customer.address}

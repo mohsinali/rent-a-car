@@ -1,0 +1,23 @@
+
+- @customers.each do |customer|
+    tr 
+      td 
+        = customer.id
+      td 
+        = customer.name
+      td
+        = customer.cnic
+      td
+        = customer.phone
+      td
+        = customer.address
+      td
+        = link_to customer_path(customer),class: "btn btn-primary m-r-xs",title: "Customer details" do
+            i.fa.fa-file-o.m-r-xs
+            span
+        = link_to edit_customer_path(customer),class: "btn btn-info m-r-xs",title: "Edit customer" do
+            i.fa.fa-pencil-square-o.m-r-xs
+            span
+        = link_to customer_path(customer),method: :delete,data: {confirm: "Are you sure to delete this customer?"},title: "Remove customer",class: "btn btn-danger m-r-xs" do
+            i.fa.fa-trash.m-r-xs
+            span

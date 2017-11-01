@@ -1,29 +1,34 @@
-h1 Listing customers
 
-table
-  thead
-    tr
-      th Name
-      th Cnic
-      th Phone
-      th Address
-      th Reference
-      th
-      th
-      th
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+    ol.breadcrumb
+      li
+        = link_to "Home",root_path
+      li.active
+        strong Customer List
+  .col-lg-2
 
-  tbody
-    - @customers.each do |customer|
-      tr
-        td = customer.name
-        td = customer.cnic
-        td = customer.phone
-        td = customer.address
-        td = customer.reference
-        td = link_to 'Show', customer
-        td = link_to 'Edit', edit_customer_path(customer)
-        td = link_to 'Destroy', customer, data: { confirm: 'Are you sure?' }, method: :delete
 
-br
-
-= link_to 'New Customer', new_customer_path
+.row
+  .col-lg-12
+    .ibox.float-e-margins
+      .ibox-title
+        h5 Customers
+        .pull-right
+          = link_to new_customer_path,class: "btn btn-primary btn-sm" do
+            i.fa.fa-plus.m-r-xs
+            span Add a Customer
+      .ibox-content
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th Id 
+                th Name
+                th CNIC
+                th Phone
+                th Address
+                th Actions
+            tbody.booking_list
+              = render partial: "customer",collection: @customers
