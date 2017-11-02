@@ -19,6 +19,14 @@ class BookingsController < ApplicationController
     @booking.references.build
   end
 
+  def customer_by_cnic    
+    @customer = Customer.where(cnic: params[:cnic])
+
+    respond_to do |format|
+      format.js {render layout: false}
+    end
+  end
+
   # GET /bookings/1/edit
   def edit
     @booking = Booking.find(params[:id])
@@ -29,7 +37,9 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    #check  by CNIC if customer already exist 
+    @customer = Customer.where(:cnic => params[:booking][:customer_attributes]["cnic"])
+    @booking.customer_id = @customer.first.id if @customer.any?
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }

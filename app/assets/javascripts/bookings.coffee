@@ -21,11 +21,24 @@ class App.Bookings extends App.Base
     # form Validation
     new App.Bookings().bookingFormHandler()
 
-   # calculate and fill price section in booking form
+    # calculate and fill price section in booking form
 
     new App.Bookings().bookingPriceHandler()
 
+    # hide CNIC form for Returning Customer
+    $('.cnic').hide('slow')
 
+    # New Customer form show
+    $('#new_customer').click ->
+      $('.cnic').hide('slow')
+    
+      $('#booking_form').show('slow')
+  
+    # Returning Customer form show
+    $('#returning_customer').click ->
+      $('#cnic').val("")
+      $('.cnic').show('slow')
+      $('#booking_form').hide('slow')
 
 
   edit: =>

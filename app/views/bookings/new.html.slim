@@ -8,6 +8,10 @@
         strong Add a Booking
   .col-lg-2
 
-== render 'form'
+= link_to 'New Customer', '#', class: 'btn btn-success', id: 'new_customer'
+= link_to 'Returning Customer', '#', class: 'btn btn-primary',  id: 'returning_customer'
+
+= render 'new_returning_customer_form'
+= render 'form'
 
 = link_to 'Back', bookings_path,class: 'btn btn-danger submit m-l-sm'

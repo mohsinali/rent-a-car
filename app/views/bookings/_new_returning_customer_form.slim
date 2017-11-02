@@ -1,0 +1,6 @@
+= simple_form_for :booking, :url => customer_by_cnic_bookings_path, :remote => true do |f|
+  .cnic
+    label Enter CNIC no.
+    = text_field_tag :cnic
+    = button_tag :Go, class: 'btn btn-danger', id: 'cnic-button'
+    .message

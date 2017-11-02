@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   resources :references
-  resources :bookings
-  resources :customers
+  resources :bookings do
+      collection do
+      post :customer_by_cnic
+    end
+  end
+  resources :customers 
+  
   devise_for :users
   resources :users
   resources :car_versions

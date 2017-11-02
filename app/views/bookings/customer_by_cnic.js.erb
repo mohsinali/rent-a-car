@@ -1,0 +1,23 @@
+<% if @customer.any? %>
+  
+  $('#booking_customer_attributes_name').val("<%= @customer[0].name %>");
+
+
+  $('#booking_customer_attributes_cnic').val("<%= @customer[0].cnic %>");
+  
+
+  $('#booking_customer_attributes_phone').val("<%= @customer[0].phone %>");
+
+
+  $('#booking_customer_attributes_address').val("<%= @customer[0].address %>");
+  
+
+  $('#display_loader').hide();
+  $('#booking_form').show('slow');
+
+<% else %>
+  $('#display_loader').hide();
+  $('.message').html('Enter valid CNIC no.');
+  $('.message').show();
+  $('#booking_form').hide();
+<% end %>
