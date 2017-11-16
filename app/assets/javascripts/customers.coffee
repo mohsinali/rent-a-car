@@ -26,6 +26,10 @@ class App.Customers extends App.Base
 
 
   edit: =>
+
+     # form Validation
+    new App.Customers().customerFormHandler()
+
     return
 
 
@@ -42,6 +46,7 @@ class App.Customers extends App.Base
           "customer[cnic]":
             required: true
             digits: true
-            length: 13
+            maxlength: 13
+            minlength: 13
           "customer[address]":
             required: true
