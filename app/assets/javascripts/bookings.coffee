@@ -110,7 +110,9 @@ class App.Bookings extends App.Base
           "booking[customer_attributes][cnic]":
             required: true
             digits: true
-            length: 13
+            maxlength: 13
+            minlength: 13
+
           "booking[customer_attributes][address]":
             required: true
           "booking[advance_payment]":
